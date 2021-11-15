@@ -1,20 +1,9 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: oshelba <oshelba@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/13 20:43:13 by oshelba           #+#    #+#             */
-/*   Updated: 2021/11/15 19:54:36 by oshelba          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
 # include "../libft/libft.h"
 # include <stdarg.h>
+# include <stdlib.h>
 
 typedef struct  s_flags
 {
@@ -35,7 +24,7 @@ int ft_processor_percent(t_flags flags);
 int ft_processor_pointer(unsigned long long ar,t_flags flags);
 int ft_processor_string(char *str, t_flags flags);
 int ft_processor_unit(unsigned int unit, t_flags flags);
-int ft_putchar(int c);
+void	ft_putchar(int c);
 int	ft_putstrprec(char *str, int pr);
 int processor(int   type, va_list args, t_flags flags);
 int putstring(char *str, t_flags flags);
@@ -45,7 +34,6 @@ t_flags flag_minus(t_flags flags);
 t_flags flag_width(va_list args,t_flags flags);
 t_flags flag_digit(char s, t_flags flags);
 int parse_flag(const char *str, int i, t_flags *flags, va_list args);
-int parse_input(char *str1, va_list args);
+int parse_input(const char *str1, va_list args);
 
 #endif
-*/

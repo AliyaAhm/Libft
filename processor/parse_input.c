@@ -1,6 +1,6 @@
-#include "../printf.h"
+#include "ft_printf.h"
 
-int parse_input(char *str1, va_list args)
+int parse_input(const char *str1, va_list args)
 {
     int leng;
     t_flags flags;

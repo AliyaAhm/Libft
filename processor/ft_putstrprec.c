@@ -1,4 +1,4 @@
-#include "../rintf.h"
+#include "ft_printf.h"
 
 int		ft_putstrprec(char *str, int pr)
 {

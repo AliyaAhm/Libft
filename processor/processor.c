@@ -1,4 +1,4 @@
-#include "../printf.h"
+#include "ft_printf.h"
 
 int processor(int   type, va_list args, t_flags flags)
 {

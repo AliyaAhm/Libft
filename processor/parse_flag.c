@@ -1,15 +1,15 @@
-#include "../printf.h"
-
+#include "ft_printf.h"
+/*
 t_flags init_flags(void)
 {
     t_flags flags;
 
-    type = 0;
-    width = 0;
-    minus = 0;
-    zero = 0;
-    precision = -1;
-    star = 0;
+    flags.type = 0;
+    flags.width = 0;
+    flags.minus = 0;
+    flags.zero = 0;
+    flags.precision = -1;
+    flags.star = 0;
     return(flags);
 }
 
@@ -42,4 +42,4 @@ int parse_flag(const char *str, int i, t_flags *flags, va_list args)
         i++;
     }
     return (i);
-}
+}*/

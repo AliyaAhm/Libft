@@ -1,4 +1,4 @@
-/*#include "printf.h"
+#include "processor/ft_printf.h"
 
 //int g_result;
 //int g_width;
@@ -288,19 +288,6 @@ int processor(int   type, va_list args, t_flags flags)
     return (len);
 }
 
-t_flags init_flags(void)
-{
-    t_flags flags;
-
-    type = 0;
-    width = 0;
-    minus = 0;
-    zero = 0;
-    precision = -1;
-    star = 0;
-    return(flags);
-}
-
 int parse_flag(const char *str, int i, t_flags *flags, va_list args)
 {
     while (str[i])
@@ -378,36 +365,50 @@ t_flags flag_digit(char s, t_flags flags)
         width = 0;
     width = width * 10 + (s - '0');
 } 
+*/
 
-int parse_input(char *str1, va_list args)
+t_flags init_flags(void)
 {
-    int leng;
     t_flags flags;
-    int i;
 
-    leng = 0;
-    i = 0;
-    while (1)
+    flags.type = 0;
+    flags.width = 0;
+    flags.minus = 0;
+    flags.zero = 0;
+    flags.precision = -1;
+    flags.star = 0;
+    return(flags);
+}
+
+int parse_flag(const char *str, int i, t_flags *flags, va_list args)
+{
+    while (str[i])
     {
-        flags = init_flags(t_flags);
-        if (!str1[i])
+        if (!ft_isdigit(str[i]) && !((str[i] == 'c') || (str[i] == 's') || (str[i] == 'p') 
+        || (str[i] == 'd') || (str[i] == 'i') || (str[i] == 'u') || (str[i] == 'x') 
+        || (str[i] == 'X') || (str[i] == '%')) && !((str[i] == '-') || (str[i] == ' ') 
+        || (str[i] == '0') || (str[i] == '.') || (str[i] == '*')))
             break;
-        else if (str[i] == '%' && str1[i + 1])
+        if (str[i] == '0' && flags->width == 0 && flags->minus == 0)
+            flags->zero = 1;
+        if (str[i] == '.')
+            i = flag_precision(str, i, flags, args);
+        if (str[i] == '-')
+            *flags = flag_minus(*flags);
+        if (str[i] == '*')
+            *flags = flag_width(args, *flags);
+        if (ft_isdigit(str[i]))
+            *flags = flag_digit(str[i], *flags);
+        if ((str[i] == 'c') || (str[i] == 's') || (str[i] == 'p') 
+        || (str[i] == 'd') || (str[i] == 'i') || (str[i] == 'u') || (str[i] == 'x') 
+        || (str[i] == 'X') || (str[i] == '%'))
         {
-            i = parse_flag(str, i, &flags, args);
-            if ((c == 'c') || (c == 's') || (c == 'p') || (c == 'd') 
-                || (c == 'i') || (c == 'u') || (c == 'x') 
-                || (c == 'X') || (c == '%'));
-                leng = leng + processor(str[i], args)
+            flags->type = str[i];
+            break;
         }
-        else if (str[i] != '%')
-            {
-                ft_putchar(str[i]);
-                leng++;
-            }
         i++;
     }
-    return (leng);
+    return (i);
 }
 
 int ft_printf(const char *str, ...)
@@ -417,9 +418,10 @@ int ft_printf(const char *str, ...)
     va_list ap;
 
     len = 0;
-    s = (const char *)str;
-    va_start(ap, s);
-    len = parse_input(s, ap);
-    va_end(ap)
+    s = ft_strdup(str);
+    va_start(ap, str);
+    len += parse_input(s, ap);
+    va_end(ap);
+    free((char *)s);
     return (len);
-}*/
+}
