@@ -6,7 +6,7 @@
 #    By: oshelba <oshelba@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/13 22:35:02 by oshelba           #+#    #+#              #
-#    Updated: 2021/11/15 22:07:54 by oshelba          ###   ########.fr        #
+#    Updated: 2021/11/16 22:14:34 by oshelba          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,6 @@ processor/ft_ull_base.c \
 processor/processor.c \
 processor/putstring.c \
 processor/flags.c \
-processor/parse_flag.c \
 processor/parse_input.c \
 
 HEADER = processor/ft_printf.h

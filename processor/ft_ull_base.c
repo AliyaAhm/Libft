@@ -18,7 +18,7 @@ char *n, int len)
 char		*ft_ull_base(unsigned long long ull, int base)
 {
 	char				*n;
-	unsigned long long	buff_ull;
+	unsigned long long	buf_ull;
 	int					len;
 
 	n = 0;

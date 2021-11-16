@@ -7,8 +7,8 @@ int ft_processor_string(char *str, t_flags flags)
     len = 0;
     if (!str)
         str = "(null)";
-    if (flags.precision >= 0 && (size_t)flags.precission > ft_strlen(str))
-        flags.precision = ft_strlen(str);
+    if (flags.precision >= 0 && (size_t)flags.precision > ft_strlen(str))
+        flags.precision = (int)ft_strlen(str);
     if (flags.minus == 1)
         len += putstring(str, flags);
     if (flags.precision >= 0)

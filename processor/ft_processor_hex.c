@@ -11,8 +11,8 @@ static int ft_part_hex(char *hex, t_flags flags)
                 len += ft_pr_width(flags.width, 0, 0);
             len += ft_putstrprec(hex, ft_strlen(hex));
         }
-    if (flags.precision >= 0 && flags.precision < ft_strlen(hex))
-        flags.precision = ft_strlen(hex);
+    if (flags.precision >= 0 && flags.precision < (int)ft_strlen(hex))
+        flags.precision = (int)ft_strlen(hex);
     if (flags.precision >= 0)
     {
         flags.width -= flags.precision;
@@ -21,10 +21,11 @@ static int ft_part_hex(char *hex, t_flags flags)
     else
         len += ft_pr_width(flags.width, ft_strlen(hex), flags.zero);
     if (flags.minus == 0)
-        len += ft_ret_part_hex(hex, flags);
-    if (flags.precision >= 0)
-        len += ft_pr_width(flags.width, 0, 0);
-    len += ft_putstrprec(string, ft_strlen(string));
+        {
+            if (flags.precision >= 0)
+                len += ft_pr_width(flags.width, 0, 0);
+            len += ft_putstrprec(hex, ft_strlen(hex));
+        }
     return(len);
 }
 
@@ -35,6 +36,7 @@ int ft_processor_hex(unsigned int i, int height, t_flags flags)
     int     index;
 
     index = 0;
+    len = 0;
     i = (unsigned int)(i + 4294967295 + 1);
     if (flags.precision == 0 && i == 0)
     {
@@ -49,6 +51,6 @@ int ft_processor_hex(unsigned int i, int height, t_flags flags)
             index++;
         }
     len = ft_part_hex(hex, flags);
-    free (hex);
+    free(hex);
     return(len);
 }
