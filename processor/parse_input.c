@@ -59,7 +59,7 @@ int parse_input(const char *str1, va_list args)
             break;
         else if (str1[i] == '%' && str1[i + 1])
         {
-            i = parse_flag(str1, i, &flags, args);
+            i = parse_flag(str1, ++i, &flags, args);
             if ((str1[i] == 'c') || (str1[i] == 's') || (str1[i] == 'p') 
             || (str1[i] == 'd') || (str1[i] == 'i') || (str1[i] == 'u') 
             || (str1[i] == 'x') || (str1[i] == 'X') || (str1[i] == '%'))

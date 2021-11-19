@@ -6,7 +6,7 @@
 #    By: oshelba <oshelba@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/13 22:35:02 by oshelba           #+#    #+#              #
-#    Updated: 2021/11/16 22:14:34 by oshelba          ###   ########.fr        #
+#    Updated: 2021/11/19 23:50:46 by oshelba          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ processor/processor.c \
 processor/putstring.c \
 processor/flags.c \
 processor/parse_input.c \
+processor/ft_pitoa.c \
 
 HEADER = processor/ft_printf.h
 
@@ -44,6 +45,9 @@ all : ${NAME}
 ${NAME} : ${OBJS} ${HEADER}
 	${MAKE} -C ./libft all
 	ar -rcs ${NAME} libft/*.o ${OBJS}
+
+bonus : 
+	${MAKE} ${NAME}
 
 %.o : %.c
 	${CC} ${CFLAGS} -c $< -o $@

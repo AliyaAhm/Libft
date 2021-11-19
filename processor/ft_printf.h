@@ -35,5 +35,6 @@ t_flags flag_width(va_list args,t_flags flags);
 t_flags flag_digit(char s, t_flags flags);
 int parse_flag(const char *str, int i, t_flags *flags, va_list args);
 int parse_input(const char *str1, va_list args);
+char	*ft_pitoa(unsigned int n);
 
 #endif

@@ -44,10 +44,10 @@ int ft_processor_hex(unsigned int i, int height, t_flags flags)
         return (len);
     }
     hex = ft_ull_base((unsigned long long)i, 16);
-    if (height == 1)
-        while (index < len)
+    if (height == 0)
+        while (hex[index])
         {
-            hex[index] = ft_tolower(hex[index]);
+            hex[index] = ft_toupper(hex[index]);
             index++;
         }
     len = ft_part_hex(hex, flags);

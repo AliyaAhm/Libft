@@ -14,8 +14,3 @@ int ft_printf(const char *str, ...)
     free((char *)s);
     return (len);
 }
-/*
-int main(void)
-{
-    ft_printf("%c", '0');
-}*/

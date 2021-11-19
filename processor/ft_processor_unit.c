@@ -38,7 +38,7 @@ int ft_processor_unit(unsigned int unit, t_flags flags)
     unit = (unsigned int)(unit + 4294967295 + 1);
     if (flags.precision == 0 && unit == 0)
         len += ft_pr_width(flags.width, 0, 0);
-    unit_str = ft_itoa(unit);
+    unit_str = ft_pitoa(unit);
     len += ft_pr_unit(unit_str, flags);
     free (unit_str);
     return (len);
